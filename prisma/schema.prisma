@@ -1,0 +1,32 @@
+generator client {
+  provider   = "prisma-client"
+  output     = "./generated"
+  engineType = "client"
+  runtime    = "bun"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Payable {
+  id           String   @id @default(uuid()) @db.Uuid
+  value        Float    @default(0)
+  emissionDate DateTime @default(now())
+  assignorId   String   @db.Uuid()
+
+  assignor Assignor @relation(fields: [assignorId], references: [id])
+
+  @@map("payables")
+}
+
+model Assignor {
+  id       String    @id @default(uuid()) @db.Uuid
+  document String    @unique
+  email    String    @unique
+  phone    String    @unique
+  name     String
+  payables Payable[]
+
+  @@map("assignors")
+}
