@@ -1,8 +1,9 @@
+import { AssignorController } from '../application/controllers/AssignorController';
+import { routeAdapter } from './adapters/routeAdapter';
+
 const Routes = {
-	'/': {
-		GET: async () => {
-			return new Response('Hello, World!');
-		},
+	'/integrations/assignor': {
+		POST: routeAdapter(new AssignorController()),
 	},
 };
 
