@@ -11,7 +11,7 @@ const schema = z.object({
 	name: z.string().max(140),
 });
 
-export class AssignorController implements IController {
+export class PostAssignorController implements IController {
 	async handle({ body }: IRequest): Promise<IResponse> {
 		const createAssignor = new CreateAssignorUseCase();
 

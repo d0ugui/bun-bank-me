@@ -1,5 +1,5 @@
-import { prismaClient } from '../db/db';
 import { AssignorAlreadyExists } from '../errors/AssignorAlreadyExists';
+import { prismaClient } from '../libs/db';
 
 interface IInput {
 	document: string;
