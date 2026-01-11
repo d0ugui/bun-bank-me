@@ -1,4 +1,4 @@
-import { ResourceNotFound } from '../errors/AssignorNotFound';
+import { AssignorNotFound } from '../errors/AssignorNotFound';
 import { prismaClient } from '../libs/db';
 
 export class DeleteAssignorUseCase {
@@ -8,7 +8,7 @@ export class DeleteAssignorUseCase {
 		});
 
 		if (!assignor) {
-			throw new ResourceNotFound();
+			throw new AssignorNotFound();
 		}
 
 		await prismaClient.assignor.delete({

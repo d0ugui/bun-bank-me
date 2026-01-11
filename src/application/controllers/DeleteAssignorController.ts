@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { UserNotFound } from '../errors/UserNotFound';
+import { AssignorNotFound } from '../errors/AssignorNotFound';
 import type { IController, IResponse } from '../interfaces/IController';
 import type { IRequest } from '../interfaces/IRequest';
 import { DeleteAssignorUseCase } from '../useCases/DeleteAssignorUseCase';
@@ -31,7 +31,7 @@ export class DeleteAssignorController implements IController {
 				};
 			}
 
-			if (error instanceof UserNotFound) {
+			if (error instanceof AssignorNotFound) {
 				return {
 					statusCode: 404,
 					body: {
