@@ -1,3 +1,5 @@
+import { DeleteAssignorController } from '../application/controllers/DeleteAssignorController';
+import { DeletePayableController } from '../application/controllers/DeletePayableController';
 import { ListAssignorByIdController } from '../application/controllers/ListAssignorByIdController';
 import { ListAssignorsController } from '../application/controllers/ListAssignorsController';
 import { ListPayableByIdController } from '../application/controllers/ListPayableByIdController';
@@ -17,9 +19,11 @@ const Routes = {
 	},
 	'/integrations/assignor/:id': {
 		GET: routeAdapter(new ListAssignorByIdController()),
+		DELETE: routeAdapter(new DeleteAssignorController()),
 	},
 	'/integrations/payable/:id': {
 		GET: routeAdapter(new ListPayableByIdController()),
+		DELETE: routeAdapter(new DeletePayableController()),
 	},
 };
 
