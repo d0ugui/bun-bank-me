@@ -6,6 +6,7 @@ import { ListPayableByIdController } from '../application/controllers/ListPayabl
 import { ListPayablesController } from '../application/controllers/ListPayablesController';
 import { PostAssignorController } from '../application/controllers/PostAssignorController';
 import { PostPayableController } from '../application/controllers/PostPayableController';
+import { UpdateAssignorController } from '../application/controllers/UpdateAssignorController';
 import { routeAdapter } from './adapters/routeAdapter';
 
 const Routes = {
@@ -20,6 +21,7 @@ const Routes = {
 	'/integrations/assignor/:id': {
 		GET: routeAdapter(new ListAssignorByIdController()),
 		DELETE: routeAdapter(new DeleteAssignorController()),
+		PATCH: routeAdapter(new UpdateAssignorController()),
 	},
 	'/integrations/payable/:id': {
 		GET: routeAdapter(new ListPayableByIdController()),
