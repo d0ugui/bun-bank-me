@@ -6,10 +6,14 @@ import { ListPayableByIdController } from '../application/controllers/ListPayabl
 import { ListPayablesController } from '../application/controllers/ListPayablesController';
 import { PostAssignorController } from '../application/controllers/PostAssignorController';
 import { PostPayableController } from '../application/controllers/PostPayableController';
+import { SignUpController } from '../application/controllers/SignUpController';
 import { UpdateAssignorController } from '../application/controllers/UpdateAssignorController';
 import { routeAdapter } from './adapters/routeAdapter';
 
 const Routes = {
+	'/sign-up': {
+		POST: routeAdapter(new SignUpController()),
+	},
 	'/integrations/assignor': {
 		POST: routeAdapter(new PostAssignorController()),
 		GET: routeAdapter(new ListAssignorsController()),
