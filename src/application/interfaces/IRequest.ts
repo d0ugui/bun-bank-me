@@ -1,5 +1,5 @@
 export interface IRequest {
-	body: Record<string, any>;
+	body: unknown;
 	params: Record<string, string>;
 	headers: Record<string, string>;
 }

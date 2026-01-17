@@ -1,14 +1,14 @@
-import type { BunRequest } from 'bun';
+import type { Context } from 'elysia';
 import type { IController } from '../../application/interfaces/IController';
 
 export function routeAdapter(controller: IController) {
-	return async (req: BunRequest) => {
+	return async (ctx: Context) => {
 		const { statusCode, body } = await controller.handle({
-			params: req.params,
-			body: await req.body?.json(),
-			headers: Object.fromEntries(req.headers.entries()),
+			params: ctx.params,
+			body: ctx.body,
+			headers: Object.fromEntries(ctx.request.headers.entries()),
 		});
 
-		return new Response(JSON.stringify(body), { status: statusCode });
+		return ctx.status(statusCode, body);
 	};
 }
