@@ -11,6 +11,7 @@ import { PostPayableController } from '../application/controllers/PostPayableCon
 import { SignInController } from '../application/controllers/SignInController';
 import { SignUpController } from '../application/controllers/SignUpController';
 import { UpdateAssignorController } from '../application/controllers/UpdateAssignorController';
+import { authenticationMiddleware } from '../application/middleware/AuthenticationMiddleware';
 import { routeAdapter } from './adapters/routeAdapter';
 
 const app = new Elysia()
@@ -18,6 +19,7 @@ const app = new Elysia()
 	.post('/sign-in', routeAdapter(new SignInController()))
 	.group('/integrations', (app) =>
 		app
+			.resolve((ctx) => authenticationMiddleware(ctx))
 			.post('/assignor', routeAdapter(new PostAssignorController()))
 			.get('/assignor', routeAdapter(new ListAssignorsController()))
 			.get('/assignor/:id', routeAdapter(new ListAssignorByIdController()))
