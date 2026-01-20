@@ -8,3 +8,19 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: bun-bank-me
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  bun-bank-me-backend:
+    container_name: bun-bank-me-backend
+    image: bun-bank-me
+    ports:
+      - 3001:3001
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://postgres:postgres@bun-bank-me-db:5432/bun-bank-me
+    depends_on:
+      bun-bank-me-db:
+        condition: service_healthy
