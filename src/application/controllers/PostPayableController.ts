@@ -5,6 +5,7 @@ import { CreatePayableUseCase } from '../useCases/CreatePayableUseCase.ts';
 
 const schema = z.object({
 	value: z.number().min(0),
+	assignorId: z.string(),
 });
 
 export class PostPayableController implements IController {
@@ -12,9 +13,9 @@ export class PostPayableController implements IController {
 		const createPayable = new CreatePayableUseCase();
 
 		try {
-			const { value } = schema.parse(body);
+			const { value, assignorId } = schema.parse(body);
 
-			await createPayable.execute({ value });
+			await createPayable.execute({ value, assignorId });
 
 			return {
 				statusCode: 204,
