@@ -2,13 +2,14 @@ import { prismaClient } from '../libs/db';
 
 interface IInput {
 	value: number;
+	assignorId: string;
 }
 
 export class CreatePayableUseCase {
-	async execute({ value }: IInput) {
+	async execute({ value, assignorId }: IInput) {
 		await prismaClient.payable.create({
 			data: {
-				assignorId: 'ca6baae8-9d4b-4700-b0d4-a785eae29b31',
+				assignorId,
 				value,
 			},
 		});

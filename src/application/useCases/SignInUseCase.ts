@@ -32,7 +32,7 @@ export class SignInUseCase {
 		const accessToken = sign(
 			{ sub: account.id, role: account.role },
 			Bun.env.JWT_SECRET,
-			{ expiresIn: '1m' },
+			{ expiresIn: '10m' },
 		);
 
 		return {
