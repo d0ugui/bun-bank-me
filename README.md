@@ -17,7 +17,7 @@ This project is a REST API that simulates a simple banking system for managing p
 #### Clone the repository
 
 ```sh
-git clone <repository-url>
+git clone https://github.com/d0ugui/bun-bank-me.git
 cd bun-bank-me
 ```
 
