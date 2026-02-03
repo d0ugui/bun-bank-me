@@ -1,0 +1,96 @@
+# Variables
+@baseUrl = http://localhost:3001
+@token = YOUR_JWT_TOKEN
+
+# Sign Up - Create a new account
+POST {{baseUrl}}/sign-up
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "your_password"
+}
+
+# Sign In - Authenticate user
+POST {{baseUrl}}/sign-in
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "your_password"
+}
+
+# Create Assignor
+POST {{baseUrl}}/integrations/assignor
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Company Name",
+  "email": "company@example.com",
+  "phone": "11999999999",
+  "document": "12345678901"
+}
+
+# List All Assignors
+GET {{baseUrl}}/integrations/assignor
+Authorization: Bearer {{token}}
+
+# Get Assignor by ID
+GET {{baseUrl}}/integrations/assignor/{{assignorId}}
+Authorization: Bearer {{token}}
+
+# Update Assignor
+PATCH {{baseUrl}}/integrations/assignor/{{assignorId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Updated Company Name",
+  "phone": "11988888888"
+}
+
+# Delete Assignor
+DELETE {{baseUrl}}/integrations/assignor/{{assignorId}}
+Authorization: Bearer {{token}}
+
+# Create Payable
+POST {{baseUrl}}/integrations/payable
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "value": 1500.00,
+  "assignorId": "assignor-uuid-here"
+}
+
+# Create Payables Batch (via RabbitMQ)
+POST {{baseUrl}}/integrations/payable/batch
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "payables": [
+    {
+      "value": 1000.00,
+      "assignorId": "assignor-uuid-here"
+    },
+    {
+      "value": 2000.00,
+      "assignorId": "assignor-uuid-here"
+    }
+  ]
+}
+
+# List All Payables
+GET {{baseUrl}}/integrations/payable
+Authorization: Bearer {{token}}
+
+# Get Payable by ID
+GET {{baseUrl}}/integrations/payable/{{payableId}}
+Authorization: Bearer {{token}}
+
+# Delete Payable
+DELETE {{baseUrl}}/integrations/payable/{{payableId}}
+Authorization: Bearer {{token}}
