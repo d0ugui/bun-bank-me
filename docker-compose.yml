@@ -37,6 +37,9 @@ services:
     environment:
       NODE_ENV: production
       DATABASE_URL: postgres://postgres:postgres@bun-bank-me-db:5432/bun-bank-me
+      RABBITMQ_URL: amqp://admin:admin@rabbitmq:5672
+      RABBITMQ_QUEUE_NAME: payables-queue
+      JWT_SECRET: 8db29db198dyf
     depends_on:
       bun-bank-me-db:
         condition: service_healthy
