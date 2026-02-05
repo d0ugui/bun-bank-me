@@ -10,9 +10,8 @@ This project is a REST API that simulates a simple banking system for managing p
 
 > [!IMPORTANT]
 > You need to have Bun runtime installed on your machine.  
-> You can find the installation guide [here](https://bun.sh/docs/installation).  
-> You also need to have Docker installed.  
-
+> You can find the installation guide [here](https://bun.sh/docs/installation).   
+> You also need to have Docker installed.   
 
 #### Clone the repository
 
@@ -33,11 +32,10 @@ bun i
 cp .env.example .env
 ```
 
-#### Build image and run containers
+#### Generate prisma client
 
 ```sh
-docker build -t bun-bank-me .
-docker compose up -d
+bunx prisma generate
 ```
 
 #### Run migrations
@@ -49,10 +47,18 @@ bunx prisma migrate deploy
 #### Start server
 
 ```sh
-The docker compose file will start the server on port 3001.
-But if you want to run the server locally, you can use the following command:
-
 bun run dev
+```
+
+> [!IMPORTANT]
+> If you prefer to run the appplication in containerized mode, you can follow the step below.  
+> Make sure to update the `DATABASE_URL` and `RABBITMQ_URL` environment variables in the `.env` file to match your local environment.
+
+#### Build image and run containers
+
+```sh
+docker build -t bun-bank-me .
+docker compose up -d
 ```
 
 ## Endpoints
