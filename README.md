@@ -52,7 +52,6 @@ bun run dev
 
 > [!IMPORTANT]
 > If you prefer to run the appplication in containerized mode, you can follow the step below.  
-> Make sure to update the `DATABASE_URL` and `RABBITMQ_URL` environment variables in the `.env` file to match your local environment.
 
 #### Build image and run containers
 
