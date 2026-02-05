@@ -9,9 +9,9 @@ This project is a REST API that simulates a simple banking system for managing p
 ## Installation
 
 > [!IMPORTANT]
-> You need to have Bun runtime installed on your machine. 
-> You can find the installation guide [here](https://bun.sh/docs/installation).
-> You also need to have Docker installed.
+> You need to have Bun runtime installed on your machine.  
+> You can find the installation guide [here](https://bun.sh/docs/installation).  
+> You also need to have Docker installed.  
 
 
 #### Clone the repository
@@ -19,6 +19,12 @@ This project is a REST API that simulates a simple banking system for managing p
 ```sh
 git clone https://github.com/d0ugui/bun-bank-me.git
 cd bun-bank-me
+```
+
+#### Install dependencies
+
+```sh
+bun i
 ```
 
 #### Create .env file
@@ -51,5 +57,6 @@ bun run dev
 
 ## Endpoints
 
-See [requests.http](./requests.http) for all available endpoints with example payloads. You can use the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) VS Code extension to execute requests directly from the file.
+See [requests.http](./requests.http) for all available endpoints with example payloads. 
+You can use the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) VS Code extension to execute requests directly from the file.
 

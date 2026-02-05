@@ -3,6 +3,7 @@ node_modules
 
 # IDEs
 .zed
+.vscode
 
 # output
 out
